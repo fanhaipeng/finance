@@ -1,0 +1,27 @@
+<p>
+  <b>Date:</b>
+  <%=h @expense_item.date %>
+</p>
+
+<p>
+  <b>Expense type:</b>
+  <%=h @expense_item.expense_type_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @expense_item.value %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @expense_item.note %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%=h @expense_item.tag_names %>
+</p>
+
+<%= link_to 'Edit', edit_expense_item_path(@expense_item) %> |
+<%= link_to 'Back', expense_items_path %>

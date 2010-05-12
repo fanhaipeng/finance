@@ -1,0 +1,19 @@
+<h1>所有的消费类型</h1>
+
+<%= link_to '返回主页', expense_month_path(Date.today.year, Date.today.mon) %>
+<table>
+  <tr>
+    <th>消费类型</th>
+  </tr>
+  <% @expense_types.each do |expense_type| %>
+  <tr>
+    <td><%=h expense_type.description %></td>
+    <td><%= link_to '编辑', edit_expense_type_path(expense_type) %></td>
+    <td><%= link_to '删除', expense_type, :confirm => '确定要删除吗？', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to '新建消费类型', new_expense_type_path %>

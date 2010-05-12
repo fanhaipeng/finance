@@ -1,0 +1,16 @@
+<h1>编辑标签</h1>
+
+<% form_for(@expense_tag) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '标签' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit '更新' %>
+  </p>
+<% end %>
+
+<%= link_to '显示', @expense_tag %> |
+<%= link_to '返回', expense_tags_path %>

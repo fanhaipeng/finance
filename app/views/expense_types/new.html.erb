@@ -1,0 +1,15 @@
+<h1>新建消费类型</h1>
+
+<% form_for(@expense_type) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :description, '消费类型' %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit '创建' %>
+  </p>
+<% end %>
+
+<%= link_to '返回', expense_types_path %>

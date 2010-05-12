@@ -1,0 +1,33 @@
+<div>
+  <h2>批量添加消费记录</h2>
+  <%= flash[:notice] if flash[:notice] %>
+  <% form_for :expense_items, :url => { :action => 'batch_create' } do |f| %>
+    <p>
+    <%= f.label :date_from, '起始时间' %>
+    <%= f.date_select :date_from %>
+    </p>
+
+    <p>
+    <%= f.label :date_to, '结束时间' %>
+    <%= f.date_select :date_to %>
+    </p>
+
+    <p>
+    <%= f.label :expense_type_id, '类型' %>
+    <%= f.select :expense_type_id, @expense_types %>
+    </p>
+
+    <p>
+    <%= f.label :value, '金额' %>
+    <%= f.text_field :value %>
+    </p>
+
+    <p>
+    <%= f.label :note, '备注' %>
+    <%= f.text_area :note %>
+    </p>
+
+    <%= submit_tag '提交' %>
+<% end %>
+</div>
+<%= link_to '返回', expense_month_path(Date.today.year, Date.today.mon) %>

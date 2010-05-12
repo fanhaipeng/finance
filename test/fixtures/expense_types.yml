@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+
+expense_type_01:
+  id: 1
+  description: 'type01'
+
+expense_type_02:
+  id: 2
+  description: 'type02'

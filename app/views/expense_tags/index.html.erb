@@ -1,0 +1,20 @@
+<h1>所有标签</h1>
+
+<%= link_to '返回主页', expense_month_path(Date.today.year, Date.today.mon) %>
+<table>
+  <tr>
+    <th>标签</th>
+  </tr>
+
+  <% @expense_tags.each do |expense_tag| %>
+  <tr>
+    <td><%=h expense_tag.name %></td>
+    <td><%= link_to '编辑', edit_expense_tag_path(expense_tag) %></td>
+    <td><%= link_to '删除', expense_tag, :confirm => '确定要删除吗？', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to '新建标签', new_expense_tag_path %>

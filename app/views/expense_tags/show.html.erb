@@ -1,0 +1,8 @@
+<p>
+  <b>标签：</b>
+  <%=h @expense_tag.name %>
+</p>
+
+
+<%= link_to '编辑', edit_expense_tag_path(@expense_tag) %> |
+<%= link_to '返回', expense_tags_path %>
