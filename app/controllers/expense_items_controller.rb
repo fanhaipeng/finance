@@ -24,7 +24,7 @@ class ExpenseItemsController < ApplicationController
   # GET /expense_items/new.xml
   def new
     @expense_item = ExpenseItem.new
-    prepare_for Date.today.year, Date.today.mon
+    prepare_for
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @expense_item }
@@ -48,7 +48,7 @@ class ExpenseItemsController < ApplicationController
                           @expense_item.date.year, @expense_item.date.mon) }
         format.xml  { render :xml => @expense_item, :status => :created, :location => @expense_item }
       else
-        prepare_for_new
+        prepare_for
         format.html { render :action => "new" }
         format.xml  { render :xml => @expense_item.errors, :status => :unprocessable_entity }
       end
@@ -89,7 +89,7 @@ class ExpenseItemsController < ApplicationController
 
 protected
 
-  def prepare_for year, month
+  def prepare_for year=Date.today.year, month=Date.today.mon
     populate_expense_types
     populate_expense_tags
     @year = year

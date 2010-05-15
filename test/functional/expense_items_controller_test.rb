@@ -33,6 +33,18 @@ class ExpenseItemsControllerTest < ActionController::TestCase
 
   end
 
+  test "should return back to new when validation failed" do
+    assert_no_difference('ExpenseItem.count') do
+      post :create, :expense_item => 
+        { :date => Date.today,
+          :expense_type_id => 1,
+          :value => 0.00,
+          :note => 'hello',
+          :tag_names => 'tag1 tag2' }
+    end  
+    assert_template :new
+  end
+
   test "should show expense_item" do
     get :show, :id => expense_items(:one).to_param
     assert_response :success
