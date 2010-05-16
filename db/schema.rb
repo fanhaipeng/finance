@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100516053811) do
+ActiveRecord::Schema.define(:version => 20100516085424) do
 
   create_table "expense_items", :force => true do |t|
     t.date     "date",            :null => false
@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(:version => 20100516053811) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "nickname",                  :null => false
-    t.string   "email",                     :null => false
-    t.string   "salt",                      :null => false
-    t.string   "password",                  :null => false
-    t.integer  "role",       :default => 1
+    t.string   "nickname",                       :null => false
+    t.string   "email",                          :null => false
+    t.string   "salt",                           :null => false
+    t.string   "hashed_password",                :null => false
+    t.integer  "role",            :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end

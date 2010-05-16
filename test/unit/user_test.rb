@@ -6,15 +6,14 @@ class UserTest < ActiveSupport::TestCase
     assert !user.valid?
     assert user.errors.invalid?(:nickname)
     assert user.errors.invalid?(:email)
-    assert user.errors.invalid?(:salt)
     assert user.errors.invalid?(:password)
+    assert user.errors.invalid?(:password_confirmation)
   end
 
   def test_email_format
     user = User.new( :nickname => 'nickname',
-                      :salt => 'salt',
-                      :password => 'password',
-                      :password_confirmation => 'password')
+                     :password => 'password',
+                     :password_confirmation => 'password')
     user.email = 'user'
     assert !user.valid?
     assert_equal '电子邮件格式不正确', user.errors.on(:email)
@@ -25,12 +24,11 @@ class UserTest < ActiveSupport::TestCase
 
     user.email = 'user@example.com'
     assert_equal 1, user.role
-    assert user.valid?
+    user.valid?
   end
 
   def test_password_confirmation
     user = User.new( :nickname => 'nickname',
-                     :salt => 'salt',
                      :email => 'user@example.com')
     user.password = 'password'
     user.password_confirmation = 'pswd'
@@ -39,9 +37,24 @@ class UserTest < ActiveSupport::TestCase
 
     user.password_confirmation = 'password'
     assert user.valid?
-
   end
 
-  def test_password_non_blank
+  def test_hashed_password_non_blank
+    user = User.new( :nickname => 'nickname',
+                     :password => 'password',
+                     :password_confirmation => 'password',
+                     :email => 'user@example.com')
+    assert user.valid?
+  end
+
+  def test_authentication
+    user = User.new( :nickname => 'nickname',
+                     :password => 'passw0rd',
+                     :password_confirmation => 'passw0rd',
+                     :email => 'user@example.com')
+    assert user.valid?
+    assert user.save!
+    assert !User.authenticate('user@example.com', 'pass')
+    assert User.authenticate('user@example.com', 'passw0rd')
   end
 end
