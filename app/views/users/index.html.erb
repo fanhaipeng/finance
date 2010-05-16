@@ -4,8 +4,6 @@
   <tr>
     <th>Nickname</th>
     <th>Email</th>
-    <th>Salt</th>
-    <th>Password</th>
     <th>Role</th>
   </tr>
 
@@ -13,9 +11,13 @@
   <tr>
     <td><%=h user.nickname %></td>
     <td><%=h user.email %></td>
-    <td><%=h user.salt %></td>
-    <td><%=h user.password %></td>
-    <td><%=h user.role %></td>
+    <td>
+      <% if 0 == user.role %>
+        管理员
+      <% else %>
+        普通用户
+      <% end %>
+    </td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>

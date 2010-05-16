@@ -1,31 +1,27 @@
-<h1>New user</h1>
+<h1>注册新用户</h1>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :nickname %><br />
+    <%= f.label :nickname, '名字' %><br />
     <%= f.text_field :nickname %>
   </p>
   <p>
-    <%= f.label :email %><br />
+    <%= f.label :email, '邮件地址' %><br />
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :salt %><br />
-    <%= f.text_field :salt %>
+    <%= f.label :password, '密码' %><br />
+    <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.label :password_confirmation, '密码确认' %><br />
+    <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit '创建' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', users_path %>
+<%= link_to '返回', expense_month_path(Date.today.year, Date.today.mon) %>
