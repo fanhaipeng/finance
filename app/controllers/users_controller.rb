@@ -58,15 +58,15 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        flash[:notice] = 'User was successfully updated.'
+      if verify_old_password(@user) and @user.update_attributes(params[:user])
+        flash[:notice] = '用户信息更新成功！'
         format.html { redirect_to(@user) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @user.errors, 
+                             :status => :unprocessable_entity }
       end
     end
   end
@@ -80,6 +80,23 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
+    end
+  end
+
+private
+  
+  def verify_old_password user
+    old_pass = params[:verify][:oldpass]
+    pass = params[:user][:password]
+    pass_confirm = params[:user][:password_confirmation]
+    if old_pass.blank? and pass.blank? and pass_confirm.blank?
+      true
+    else
+      if !old_pass.blank? and User.authenticate(user.email, old_pass)
+        true
+      else
+        false
+      end
     end
   end
 end

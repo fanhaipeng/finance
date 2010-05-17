@@ -1,18 +1,23 @@
 <p>
-  <b>Nickname:</b>
+  <b>名字:</b>
   <%=h @user.nickname %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b>电子邮件:</b>
   <%=h @user.email %>
 </p>
 
 <p>
-  <b>Role:</b>
-  <%=h @user.role %>
+  <b>用户角色:</b>
+  <% if 0 == @user.role %>
+    管理员
+  <% else %>
+    普通用户
+  <% end %>
 </p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to '改密码', edit_user_path(@user, :change => 'password') %>
+<%= link_to '编辑', edit_user_path(@user) %> |
+<%= link_to '返回', users_path %>

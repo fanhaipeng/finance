@@ -1,32 +1,30 @@
-<h1>Editing user</h1>
+<h1>编辑用户名字</h1>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :nickname %><br />
+    <%= f.label :nickname, '名字' %><br />
     <%= f.text_field :nickname %>
   </p>
+  <% fields_for :verify do |field| %>
+    <p>
+      <%= field.label :oldpass, '旧密码' %>
+      <%= field.password_field :oldpass %>
+    </p>
+  <% end %>
   <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :password, '新密码' %><br />
+    <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :salt %><br />
-    <%= f.text_field :salt %>
+    <%= f.label :password_confirmation, '确认密码' %><br />
+    <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit '更新' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to '显示', @user %> |
+<%= link_to '返回', users_path %>

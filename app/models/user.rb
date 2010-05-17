@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
-  validates_presence_of :nickname, :email, :salt, 
-                        :password, :password_confirmation
+  validates_presence_of :nickname
+  validates_presence_of :email, :salt, 
+                        :password, :password_confirmation,
+                        :on => :create
+  validates_uniqueness_of :email,
+                          :message => '这个邮箱已经有人在用了'
   validates_format_of :email, 
                       :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                       :message => '电子邮件格式不正确'

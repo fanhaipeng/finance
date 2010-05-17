@@ -1,6 +1,12 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase
+
+  fixtures :users
+
+  def setup
+  end
+
   def test_presence_of_fields
     user = User.new    
     assert !user.valid?
@@ -48,13 +54,15 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_authentication
+    assert User.authenticate(users(:one).email, 'pass1')
+  end
+
+  def test_uniqueness_of_email
     user = User.new( :nickname => 'nickname',
-                     :password => 'passw0rd',
-                     :password_confirmation => 'passw0rd',
-                     :email => 'user@example.com')
-    assert user.valid?
-    assert user.save!
-    assert !User.authenticate('user@example.com', 'pass')
-    assert User.authenticate('user@example.com', 'passw0rd')
+                     :password => 'password',
+                     :password_confirmation => 'password',
+                     :email => users(:one).email)
+    assert !user.valid?
+    assert_equal '这个邮箱已经有人在用了', user.errors.on(:email)
   end
 end

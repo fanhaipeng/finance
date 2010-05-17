@@ -1,10 +1,10 @@
-<h1>Listing users</h1>
+<h1>显示所有用户</h1>
 
 <table>
   <tr>
-    <th>Nickname</th>
-    <th>Email</th>
-    <th>Role</th>
+    <th>名字</th>
+    <th>电子邮箱</th>
+    <th>用户类型</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -18,13 +18,13 @@
         普通用户
       <% end %>
     </td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to '显示', user %></td>
+    <td><%= link_to '编辑', edit_user_path(user) %></td>
+    <td><%= link_to '删除', user, :confirm => '确定要删除吗？', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New user', new_user_path %>
+<%= link_to '创建新用户', new_user_path %>
