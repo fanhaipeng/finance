@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100518131054) do
+ActiveRecord::Schema.define(:version => 20100518131749) do
 
   create_table "expense_items", :force => true do |t|
     t.date     "date",            :null => false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20100518131054) do
   end
 
   add_index "expense_items", ["expense_type_id"], :name => "expense_type_foreign_key"
+  add_index "expense_items", ["user_id"], :name => "eitem_user_foreign_key"
 
   create_table "expense_items_expense_tags", :id => false, :force => true do |t|
     t.integer "expense_item_id", :null => false
@@ -39,12 +40,16 @@ ActiveRecord::Schema.define(:version => 20100518131054) do
     t.integer  "user_id",    :null => false
   end
 
+  add_index "expense_tags", ["user_id"], :name => "etag_user_foreign_key"
+
   create_table "expense_types", :force => true do |t|
     t.string   "description", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",     :null => false
   end
+
+  add_index "expense_types", ["user_id"], :name => "etype_user_foreign_key"
 
   create_table "users", :force => true do |t|
     t.string   "nickname",                       :null => false
