@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100516085424) do
+ActiveRecord::Schema.define(:version => 20100517095210) do
 
   create_table "expense_items", :force => true do |t|
     t.date     "date",            :null => false
