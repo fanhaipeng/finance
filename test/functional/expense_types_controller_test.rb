@@ -1,6 +1,12 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ExpenseTypesControllerTest < ActionController::TestCase
+
+  fixtures :users
+  def setup
+    session[:user_id] = users(:one).id
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -13,6 +19,7 @@ class ExpenseTypesControllerTest < ActionController::TestCase
   end
 
   test "should create expense_type" do
+    session[:user_id] = users(:one).id
     assert_difference('ExpenseType.count') do
       post :create, :expense_type => { :description => 'expense type A' }
     end

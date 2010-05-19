@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-  
+
+  before_filter :authenticate, :except => :login
+
 protected
 
   def populate_expense_types
@@ -20,4 +22,10 @@ protected
     @expense_tags = ExpenseTag.find(:all)
   end
 
+  def authenticate
+    unless User.find_by_id(session[:user_id])
+      flash[:notice] = '请先登录'
+      redirect_to :controller => :account, :action => :login
+    end
+  end
 end

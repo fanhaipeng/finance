@@ -4,6 +4,10 @@ class UsersControllerTest < ActionController::TestCase
 
   fixtures :users
 
+  def setup
+    session[:user_id] = users(:one).id
+  end
+
   test "should get index" do
     get :index
     assert_response :success

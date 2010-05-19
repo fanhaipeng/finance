@@ -4,6 +4,11 @@ class ExpenseItemsControllerTest < ActionController::TestCase
 
   fixtures :expense_types
   fixtures :expense_items
+  fixtures :users
+
+  def setup
+    session[:user_id] = users(:one).id
+  end
 
   test "should get index" do
     get :index

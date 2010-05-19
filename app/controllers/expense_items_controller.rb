@@ -41,6 +41,7 @@ class ExpenseItemsController < ApplicationController
   # POST /expense_items.xml
   def create
     @expense_item = ExpenseItem.new(params[:expense_item])
+    @expense_item.user_id = session[:user_id]
     respond_to do |format|
       if @expense_item.save
         flash[:notice] = '成功创建消费记录！'

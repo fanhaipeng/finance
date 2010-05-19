@@ -41,7 +41,7 @@ class ExpenseTypesController < ApplicationController
   # POST /expense_types.xml
   def create
     @expense_type = ExpenseType.new(params[:expense_type])
-
+    @expense_type.user_id = session[:user_id]
     respond_to do |format|
       if @expense_type.save
         flash[:notice] = 'ExpenseType was successfully created.'

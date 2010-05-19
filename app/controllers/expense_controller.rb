@@ -25,6 +25,7 @@ class ExpenseController < ApplicationController
       (date_from .. date_to).each do|day|
         @expense_item = ExpenseItem.new
         @expense_item.date = day
+        @expense_item.user_id = session[:user_id]
         @expense_item.expense_type_id = params[:expense_items][:expense_type_id]
         @expense_item.value = params[:expense_items][:value]
         @expense_item.note = params[:expense_items][:note]

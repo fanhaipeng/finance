@@ -1,8 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
-  map.resources :users
-
   map.resources :expense_items
 
   map.resources :expense_types
@@ -58,6 +56,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.expense_action 'expense/:action',
                      :controller => 'expense'
+
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.format'
 
   map.connect "*anything",
               :controller => 'expense',

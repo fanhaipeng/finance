@@ -41,7 +41,7 @@ class ExpenseTagsController < ApplicationController
   # POST /expense_tags.xml
   def create
     @expense_tag = ExpenseTag.new(params[:expense_tag])
-
+    @expense_tag.user_id = session[:user_id]
     respond_to do |format|
       if @expense_tag.save
         flash[:notice] = 'ExpenseTag was successfully created.'
