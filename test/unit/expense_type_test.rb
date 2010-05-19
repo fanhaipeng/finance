@@ -6,6 +6,7 @@ class ExpenseTypeTest < ActiveSupport::TestCase
     expense_type = ExpenseType.new
     assert !expense_type.valid?
     assert expense_type.errors.invalid?(:description)
+    assert expense_type.errors.invalid?(:user_id)
   end
 
 end

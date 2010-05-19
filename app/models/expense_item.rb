@@ -1,10 +1,11 @@
 class ExpenseItem < ActiveRecord::Base
   # model relationship
   belongs_to :expense_type
+  belongs_to :user
   has_and_belongs_to_many :expense_tags
 
   # validations
-  validates_presence_of :date, :expense_type_id, :value
+  validates_presence_of :date, :expense_type_id, :value, :user_id
   validates_numericality_of :value, 
                             :greater_than_or_equal_to => 0.01,
                             :message => '金额不能少于一分钱'
@@ -22,7 +23,8 @@ protected
   def assign_tags
     if @tag_names
       self.expense_tags = @tag_names.split(/\s+/).map do |name|
-        ExpenseTag.find_or_create_by_name(name)
+        ExpenseTag.find_by_name_or_create(:name => name, 
+                                          :user_id => self.user_id )
       end
     end
   end

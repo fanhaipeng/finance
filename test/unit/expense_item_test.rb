@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 class ExpenseItemTest < ActiveSupport::TestCase
 
   fixtures :expense_types
+  fixtures :users
 
   def setup
     ExpenseItem.delete_all
@@ -16,12 +17,14 @@ class ExpenseItemTest < ActiveSupport::TestCase
     assert ei.errors.invalid?(:expense_type_id)
     assert !ei.errors.invalid?(:note)
     assert !ei.errors.invalid?(:tag_names)
+    assert ei.errors.invalid?(:user_id)
   end
 
   def test_positive_value
     ei = ExpenseItem.new(:date => Date.today,
                                    :note => 'hello')
     ei.expense_type = ExpenseType.find(1)
+    ei.user_id = User.find(1)
 
     ei.value = -1.0                                   
     assert !ei.valid?
@@ -45,6 +48,7 @@ class ExpenseItemTest < ActiveSupport::TestCase
   def test_tag_names
     ei = ExpenseItem.new(:date => Date.today,
                          :expense_type_id => 1,
+                         :user_id => 1,
                          :value => 2.0) 
     ei.tag_names = 'tag1 tag2 tag3'
 

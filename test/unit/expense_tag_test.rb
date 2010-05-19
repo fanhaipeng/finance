@@ -6,6 +6,7 @@ class ExpenseTagTest < ActiveSupport::TestCase
     t = ExpenseTag.new
     assert !t.valid?
     assert t.errors.invalid?(:name)
+    assert t.errors.invalid?(:user_id)
   end
 
   def test_space_in_tag
