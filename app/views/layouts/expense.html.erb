@@ -6,6 +6,13 @@
     <title><%= @title %></title>
   </head>
   <body>
+    <div>
+      <% if session[:user_id] %>
+        Welcome <%= link_to '登出', url_for(:controller => :account, :action => :logout) %>
+      <% else %>
+        <%= link_to '登录', url_for(:controller => :account, :action => 'login')%>
+      <% end %>
+    </div>
     <h1>家庭花销记录</h1>
     <%= yield :layout %>
   </body>

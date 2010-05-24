@@ -1,0 +1,14 @@
+<% form_for :user do |f| %>
+  <p>
+    <%= f.label :username, '用户名' %>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password, '密码' %>
+    <%= f.password_field :password %>
+  </p>
+  <%= submit_tag '登录' %>
+  <p>
+  <%= link_to '注册新用户', new_user_path %>
+  </p>
+<% end %>

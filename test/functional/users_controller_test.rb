@@ -19,6 +19,12 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get new even not logged in" do
+    session[:user_id] = nil
+    get :new
+    assert_response :success
+  end
+
   test "should create user" do
     assert_difference('User.count') do
       post :create, :user => {:nickname => 'nick',
@@ -26,7 +32,17 @@ class UsersControllerTest < ActionController::TestCase
                               :password => 'pass',
                               :password_confirmation => 'pass' }
     end
+    assert_redirected_to user_path(assigns(:user))
+  end
 
+  test "should create user even not logged in" do
+    session[:user_id] = nil
+    assert_difference('User.count') do
+      post :create, :user => {:nickname => 'nick',
+                              :email => 'user@example.com',
+                              :password => 'pass',
+                              :password_confirmation => 'pass' }
+    end
     assert_redirected_to user_path(assigns(:user))
   end
 
