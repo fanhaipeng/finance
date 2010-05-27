@@ -23,7 +23,8 @@ protected
   end
 
   def authenticate
-    unless User.find_by_id(session[:user_id])
+    @user = User.find_by_id(session[:user_id])
+    unless @user
       flash[:notice] = '请先登录'
       redirect_to :controller => :account, :action => :login
     end
