@@ -1,4 +1,7 @@
 class AccountController < ApplicationController
+
+  layout "application"
+
   def login
     if request.post?
       user = 

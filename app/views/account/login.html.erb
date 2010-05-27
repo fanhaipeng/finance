@@ -1,14 +1,18 @@
+<div id='loginPanel'>
 <% form_for :user do |f| %>
   <p>
     <%= f.label :username, '用户名' %>
+    <br />
     <%= f.text_field :username %>
   </p>
   <p>
     <%= f.label :password, '密码' %>
+    <br />
     <%= f.password_field :password %>
   </p>
-  <%= submit_tag '登录' %>
   <p>
-  <%= link_to '注册新用户', new_user_path %>
+  <%= submit_tag '登录' %> &nbsp;&nbsp;
+  还没有帐户？请先<%= link_to '注册', new_user_path %>
   </p>
 <% end %>
+</div>

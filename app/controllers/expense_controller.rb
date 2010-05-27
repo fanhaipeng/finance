@@ -1,5 +1,7 @@
 class ExpenseController < ApplicationController
 
+  layout "application"
+
   def index
     date_start, date_end = normalize_date
     @expense_items = 

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title><%= @title %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <%= stylesheet_link_tag 'scaffold' %>
+  </head>
+  <body>
+    <div id="skyBar">
+      <div id="skyBarContent">
+        <% if @user %>
+          <span id="welcome">欢迎</span>
+          <%= link_to @user.nickname, user_path(@user), :class => 'skyBarLink' %>
+          &nbsp;&nbsp;&nbsp;
+          <%= link_to '登出', url_for(:controller => :account, :action => :logout), :class => 'skyBarLink' %>
+        <% end %>
+      </div>
+    </div>
+    <div id="contentBar">
+      <%= yield :layout %>
+    </div>
+    <div id="groundBar">
+      <div id="groundBarContent">
+        <span>Copyright @ 2010</span></li> &nbsp;
+        <%= link_to '联系我们', '/' %></li> &nbsp;
+        <%= link_to '关于我们', '/' %></li> &nbsp;
+      </div>
+    </div>
+  </body>
+</html>
