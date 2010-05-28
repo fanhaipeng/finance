@@ -1,5 +1,5 @@
 /* BEGIN: global */
-body { 
+* { 
   margin: 0;
 }
 
@@ -82,8 +82,6 @@ a.skyBarLink:hover {
 /* BEGIN: content bar */
 #contentBar {
   min-height: 650px;
-  background-color: #eee;
-  background-image: url(/images/login-background.jpg);
 }
 /* END: content bar */
 
@@ -102,9 +100,31 @@ a.skyBarLink:hover {
 
 /* BEGIN: login */
 #loginPanel {
-  margin: auto;
-  padding: 15px;
-  background-color: #bee;
+  background-color: #eeedf3;
+  background-image: url(/images/login-background.jpg);
+  background-repeat: no-repeat;
+  background-position: 15% 80%;
+  min-height: 650px;
+  width: 100%;
+}
+
+#loginForm {
+  margin-right: 40px;
+  margin-top: 30px;
   width: 300px;
+  padding: 15px;
+  float: right;
+  background-image: url(/images/login-form.jpg);
+  height: 315px;
+}
+
+.loginField {
+  margin: 18px 18px;
+}
+
+#loginSlogen {
+  width: 500px;
+  height: auto;
+  font-size: 48px;
 }
 /* END: login */
