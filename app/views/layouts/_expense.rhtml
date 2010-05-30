@@ -1,0 +1,21 @@
+<%
+  apptabs = {1 => { :text => '花销', :link => url_for(:controller => 'expense', :action => 'index')}, 
+             2 => { :text => '收入', :link => '#'},
+             3 => { :text => '统计', :link => '#'},
+             4 => { :text => '管理', :link => '#'}}
+%>
+<div id="mainBanner">
+    <img id="imgBanner" src="/images/main-banner.jpg" />
+    <div id="navTabs">
+      <ul>
+        <% apptabs.each do |key, value| %>
+          <% if @activetab == key %> 
+            <li class="activeTab"><%= link_to value[:text], value[:link] %></li>
+          <% else %>
+            <li><%= link_to value[:text], value[:link] %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+</div>
+<%= yield %>

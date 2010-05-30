@@ -1,6 +1,6 @@
 class ExpenseController < ApplicationController
 
-  layout "application"
+  before_filter :set_active_tab
 
   def index
     date_start, date_end = normalize_date
@@ -71,5 +71,9 @@ protected
 
   def first_day_of_month year, month 
     Date.new(year.to_i, month.to_i, 1)
+  end
+
+  def set_active_tab
+    @activetab = 1
   end
 end

@@ -8,6 +8,10 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
+img {
+  border: none;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -118,8 +122,8 @@ a.skyBarLink:hover {
   height: 315px;
 }
 
-.loginField {
-  margin: 18px 18px;
+#loginForm p {
+  margin: 25px 25px;
 }
 
 #loginSlogen {
@@ -128,3 +132,55 @@ a.skyBarLink:hover {
   font-size: 48px;
 }
 /* END: login */
+
+/* BEGIN: expense layout */
+#mainBanner {
+  text-align: center;
+}
+
+#imgBanner {
+  margin: auto;
+}
+
+#navTabs {
+  font-size: 24px;
+  margin-top: 20px;
+  border-bottom: solid #222 2px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 25px;
+}
+
+#navTabs li {
+  display: inline;
+  background-color: #BBF;
+  padding: 2px 40px;
+}
+
+#navTabs li.activeTab {
+  background-color: #fff;
+  padding: 4px 40px;
+  border-top: 2px solid #222;
+  border-left: 2px solid #222;
+  border-right: 2px solid #222;
+}
+
+#navTabs li:hover {
+  background-color: #FFF;
+}
+/* END: expense layout */
+
+/* BEGIN: expense index */
+#expenseContent {
+  text-align: center;
+}
+
+#expenseTools, #expenseTable {
+  margin: auto;
+}
+
+#expenseTable {
+  width: 600px;
+}
+/* END: expense index */

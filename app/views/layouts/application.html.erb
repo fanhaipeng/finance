@@ -18,7 +18,7 @@
       </div>
     </div>
     <div id="contentBar">
-      <%= yield :layout %>
+      <%= render :partial => "layouts/#{controller.controller_name}" %>
     </div>
     <div id="groundBar">
       <div id="groundBarContent">
