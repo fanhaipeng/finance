@@ -57,6 +57,10 @@ a {
   font-size: 12px;
   list-style: square;
 }
+
+.imgButton {
+  margin: 0 3px;
+}
 /* END: global */
 
 /* BEGIN: sky bar */
@@ -81,6 +85,7 @@ a.skyBarLink {
 a.skyBarLink:hover {
   color: #fff;
 }
+
 /* END: sky bar */
 
 /* BEGIN: content bar */
@@ -159,7 +164,7 @@ a.skyBarLink:hover {
 }
 
 #navTabs li.activeTab {
-  background-color: #fff;
+  background-color: #ddd;
   padding: 4px 40px;
   border-top: 2px solid #222;
   border-left: 2px solid #222;
@@ -176,11 +181,89 @@ a.skyBarLink:hover {
   text-align: center;
 }
 
-#expenseTools, #expenseTable {
+#expenseTools, #expenseTablePanel {
   margin: auto;
 }
 
-#expenseTable {
-  width: 600px;
+#expenseTools {
+  height: 30px;
+  padding: 0 10px;
 }
+
+#expenseToolsLeft {
+  float: left;
+}
+
+#expenseToolsRight {
+  float: right;
+}
+
+#expenseTablePanel {
+  width: 800px;
+  background-image: url(/images/table-panel.jpg);
+  background-repeat: repeat-y;
+  padding: 20px;
+}
+
+#expenseTable {
+  padding: 2px;
+  width: 100%;
+}
+
+.headColumn1 {
+  width: 10%;
+}
+.headColumn2 {
+  width: 10%;
+}
+.headColumn3 {
+  width: 10%;
+}
+.headColumn4 {
+  width: 40%;
+}
+.headColumn5 {
+  width: 20%;
+}
+.headColumn6 {
+  width: 10%;
+}
+.dataCell, .headCell{
+  padding: 4px;
+  margin: 2px;
+}
+
+.headRow {
+  background-color: #2a2;
+  color: #eee;
+}
+
+.dataRow1 {
+  background-color: #fafadc;
+}
+
+.dataRow2 {
+  background-color: #f0f0d2;
+}
+
+.dataRow3 {
+  background-color: #e6e6c8;
+}
+
+.dataRow4 {
+  background-color: #dcdcbe;
+}
+
+.dataRow5 {
+  background-color: #d2d2b4;
+}
+
+.dataRow6 {
+  background-color: #c8c8aa;
+}
+
+.dataRow0 {
+  background-color: #bebea0;
+}
+
 /* END: expense index */

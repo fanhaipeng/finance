@@ -9,6 +9,7 @@ class ExpenseController < ApplicationController
                           date_start, date_end])
     @previous_month = date_start << 1
     @next_month = date_start >> 1
+    @this_month = date_start
   end
 
   def batch_new
