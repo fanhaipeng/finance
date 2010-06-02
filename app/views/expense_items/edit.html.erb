@@ -1,25 +1,23 @@
-<h1>编辑消费记录</h1>
-
+<div class="formPanel">
 <% form_for(@expense_item) do |f| %>
   <%= f.error_messages %>
-
-  <p>
+  <p class="formField">
     <%= f.label :date, '日期' %><br />
     <%= f.date_select :date %>
   </p>
-  <p>
+  <p class="formField">
     <%= f.label :expense_type_id, '类型' %><br />
     <%= f.select :expense_type_id, @expense_types %>
   </p>
-  <p>
+  <p class="formField">
     <%= f.label :value, '金额' %><br />
     <%= f.text_field :value %>
   </p>
-  <p>
+  <p class="formField">
     <%= f.label :note, '备注' %><br />
     <%= f.text_area :note %>
   </p>
-  <p>
+  <p class="formField">
     <fieldset>
       <legend>标签（空格分隔）</legend>
         <%= f.text_field :tag_names %>
@@ -29,9 +27,10 @@
       <% end %>
     </fieldset>
   </p>
-  <p>
+  <p class="formField">
     <%= f.submit '更新' %>
+    <%= link_to '返回', expense_month_url(@year, @month) %>
   </p>
 <% end %>
+</div>
 
-<%= link_to '返回', expense_month_url(@year, @month) %>

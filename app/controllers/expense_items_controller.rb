@@ -1,4 +1,7 @@
 class ExpenseItemsController < ApplicationController
+
+  before_filter :set_active_tab
+
   # GET /expense_items
   # GET /expense_items.xml
   def index
@@ -95,5 +98,9 @@ protected
     populate_expense_tags
     @year = year
     @month = month
+  end
+
+  def set_active_tab
+    @activetab = 1
   end
 end

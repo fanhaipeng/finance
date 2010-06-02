@@ -1,73 +1,59 @@
-<div id="expenseContent">
-  <div class="cr0"></div>
-  <div class="cr1"></div>
-  <div class="cr2"></div>
-  <div class="cr3"></div>
-  <div class="cr4"></div>
-  <div id="expensePanel">
-    <div id="expenseTools">
-      <div id="expenseToolsLeft">
-      <%= link_to image_tag('add.png', { :alt => '新花销记录', 
-                            :title => '创建花销记录', 
-                            :class => 'imgButton'}), 
-                  new_expense_item_path %>
-      <%= link_to image_tag('batch_add.png', {:alt => '批量创建花销记录', 
-                                              :title => '批量创建花销记录', 
-                                              :class => 'imgButton'}), 
-                  :action => 'batch_new' %>
-      </div>
-      <div id="expenseToolsRight">
-      <%= link_to_if @previous_month, 
-                     image_tag('previous.png', { :alt => "上一月", 
-                                                 :title => '上一月', 
-                                                 :class => 'imgButton'}), 
-                     :year => @previous_month.year, :month => @previous_month.month %>
-      <%=h @this_month.year.to_s + '年' + @this_month.month.to_s + '月' %>
-      <%= link_to_if @next_month, 
-                     image_tag('next.png', {:alt => "下一月", 
-                                            :title => '下一月', 
-                                            :class => 'imgButton'}), 
-                     :year => @next_month.year, :month => @next_month.month %>
-      </div>
-    </div>
-    <table id="expenseTable">
-      <thead>
-        <tr class="headRow">
-          <th class="headColumn1 headCell">日期</th>
-          <th class="headColumn2 headCell">类型</th>
-          <th class="headColumn3 headCell">金额</th>
-          <th class="headColumn4 headCell">备注</th>
-          <th class="headColumn5 headCell">标签</th>
-          <th class="headColumn6 headCell">操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @expense_items.map do |expense_item| %>
-          <tr class="<%='dataRow' + ((0 == expense_item.date.day % 2)? "Even":"Odd") %>">
-          <td class="dataCell"><%= expense_item.date %></td>
-          <td class="dataCell"><%= expense_item.expense_type.description %></td>
-          <td class="dataCell"><%= expense_item.value %></td>
-          <td class="dataCell"><%= expense_item.note %></td>
-          <td class="dataCell"><%= expense_item.tag_names %></td>
-          <td class="dataCell">
-            <%= link_to image_tag('edit.png', {:alt => '编辑', 
-                                               :title => '编辑', 
-                                               :class => 'imgButton'}), 
-                        edit_expense_item_path(expense_item) %>
-                        <%= link_to image_tag('delete.png', {:alt => '删除',
-                                                             :title => '删除', 
-                                                             :class => 'imgButton'}), 
-                                    expense_item, 
-                                    :confirm => "确定要删除吗？", :method => 'delete' %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div id="expenseTools">
+  <div id="expenseToolsLeft">
+  <%= link_to image_tag('add.png', { :alt => '新花销记录', 
+                        :title => '创建花销记录', 
+                        :class => 'imgButton'}), 
+              new_expense_item_path %>
+  <%= link_to image_tag('batch_add.png', {:alt => '批量创建花销记录', 
+                                          :title => '批量创建花销记录', 
+                                          :class => 'imgButton'}), 
+              :action => 'batch_new' %>
   </div>
-  <div class="cr4"></div>
-  <div class="cr3"></div>
-  <div class="cr2"></div>
-  <div class="cr1"></div>
-  <div class="cr0"></div>
+  <div id="expenseToolsRight">
+  <%= link_to_if @previous_month, 
+                 image_tag('previous.png', { :alt => "上一月", 
+                                             :title => '上一月', 
+                                             :class => 'imgButton'}), 
+                 :year => @previous_month.year, :month => @previous_month.month %>
+  <%=h @this_month.year.to_s + '年' + @this_month.month.to_s + '月' %>
+  <%= link_to_if @next_month, 
+                 image_tag('next.png', {:alt => "下一月", 
+                                        :title => '下一月', 
+                                        :class => 'imgButton'}), 
+                 :year => @next_month.year, :month => @next_month.month %>
+  </div>
 </div>
+<table id="expenseTable">
+  <thead>
+    <tr class="headRow">
+      <th class="headColumn1 headCell">日期</th>
+      <th class="headColumn2 headCell">类型</th>
+      <th class="headColumn3 headCell">金额</th>
+      <th class="headColumn4 headCell">备注</th>
+      <th class="headColumn5 headCell">标签</th>
+      <th class="headColumn6 headCell">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expense_items.map do |expense_item| %>
+      <tr class="<%='dataRow' + ((0 == expense_item.date.day % 2)? "Even":"Odd") %>">
+      <td class="dataCell"><%= expense_item.date %></td>
+      <td class="dataCell"><%= expense_item.expense_type.description %></td>
+      <td class="dataCell"><%= expense_item.value %></td>
+      <td class="dataCell"><%= expense_item.note %></td>
+      <td class="dataCell"><%= expense_item.tag_names %></td>
+      <td class="dataCell">
+        <%= link_to image_tag('edit.png', {:alt => '编辑', 
+                                           :title => '编辑', 
+                                           :class => 'imgButton'}), 
+                    edit_expense_item_path(expense_item) %>
+                    <%= link_to image_tag('delete.png', {:alt => '删除',
+                                                         :title => '删除', 
+                                                         :class => 'imgButton'}), 
+                                expense_item, 
+                                :confirm => "确定要删除吗？", :method => 'delete' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

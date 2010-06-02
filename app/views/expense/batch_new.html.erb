@@ -1,11 +1,4 @@
-<div id="expenseContent">
-  <div class="cr0"></div>
-  <div class="cr1"></div>
-  <div class="cr2"></div>
-  <div class="cr3"></div>
-  <div class="cr4"></div>
-  <div id="expensePanel">
-    <div class="formPanel">
+<div class="formPanel">
   <%= flash[:notice] if flash[:notice] %>
   <% form_for :expense_items, :url => { :action => 'batch_create' } do |f| %>
     <p class="formField">
@@ -38,11 +31,4 @@
     <%= link_to '返回', expense_month_path(Date.today.year, Date.today.mon) %>
     </p>
 <% end %>
-    </div>
-  </div>
-  <div class="cr4"></div>
-  <div class="cr3"></div>
-  <div class="cr2"></div>
-  <div class="cr1"></div>
-  <div class="cr0"></div>
 </div>

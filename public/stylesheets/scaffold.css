@@ -226,14 +226,13 @@ a.skyBarLink:hover {
   background-repeat: repeat-y;
   text-align: center;
   padding: 10px 0;
-  border-left: solid 4px #ddd;
-  border-right: solid 4px #ddd;
+  border-left: solid 5px #ddd;
+  border-right: solid 5px #ddd;
 }
 
 #expenseTable {
   width: 95%;
   margin: auto;
-  border: #264 solid 2px;
 }
 
 .headColumn1 {
@@ -266,11 +265,11 @@ a.skyBarLink:hover {
 }
 
 .dataRowOdd {
-  background-color: #fff;
+  background-color: #cec;
 }
 
 .dataRowEven {
-  background-color: #eef;
+  background-color: #cee;
 }
 
 .cr0, .cr1, .cr2, .cr3, .cr4 {

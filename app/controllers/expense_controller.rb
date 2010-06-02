@@ -5,8 +5,9 @@ class ExpenseController < ApplicationController
   def index
     date_start, date_end = normalize_date
     @expense_items = 
-      ExpenseItem.find(:all, :conditions => ["date BETWEEN ? and ?", 
-                          date_start, date_end])
+      ExpenseItem.find(:all, 
+                       :conditions => ["date BETWEEN ? and ?", date_start, date_end],
+                       :order => "date DESC")
     @previous_month = date_start << 1
     @next_month = date_start >> 1
     @this_month = date_start
