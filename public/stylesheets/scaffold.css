@@ -145,6 +145,15 @@ a.skyBarLink:hover {
   text-align: center;
 }
 
+#logoBanner {
+  font-size: 56px;
+  font-weight: bold;
+  color: #5779aa;
+  vertical-align: bottom;
+  line-height: 150%;
+  margin: 20px;
+}
+
 #imgBanner {
   margin: auto;
 }
@@ -165,6 +174,7 @@ a.skyBarLink:hover {
 
 #navTabs li.activeTab {
   background-color: #fff;
+  font-weight: bold;
   padding: 7px 40px;
   border-top: 4px solid #ddd;
   border-left: 4px solid #ddd;
@@ -182,8 +192,20 @@ a.skyBarLink:hover {
   text-align: center;
 }
 
-#expenseTools, #expenseTablePanel {
+#expenseTools, #expensePanel {
   margin: auto;
+}
+
+.formPanel {
+  text-align: left;
+  background-color: #eef;
+  margin: auto;
+  padding: 10px;
+  width: 50%;
+}
+
+.formField {
+  margin: 10px;
 }
 
 #expenseTools {
@@ -199,7 +221,7 @@ a.skyBarLink:hover {
   float: right;
 }
 
-#expenseTablePanel {
+#expensePanel {
   width: 844px;
   background-repeat: repeat-y;
   text-align: center;
@@ -209,9 +231,9 @@ a.skyBarLink:hover {
 }
 
 #expenseTable {
-  padding: 2px;
   width: 95%;
   margin: auto;
+  border: #264 solid 2px;
 }
 
 .headColumn1 {
@@ -229,45 +251,26 @@ a.skyBarLink:hover {
 .headColumn5 {
   width: 20%;
 }
+
 .headColumn6 {
   width: 10%;
 }
+
 .dataCell, .headCell{
   padding: 4px;
-  margin: 2px;
 }
 
 .headRow {
-  background-color: #2a2;
+  background-color: #264;
   color: #eee;
 }
 
-.dataRow1 {
-  background-color: #fafadc;
+.dataRowOdd {
+  background-color: #fff;
 }
 
-.dataRow2 {
-  background-color: #f0f0d2;
-}
-
-.dataRow3 {
-  background-color: #e6e6c8;
-}
-
-.dataRow4 {
-  background-color: #dcdcbe;
-}
-
-.dataRow5 {
-  background-color: #d2d2b4;
-}
-
-.dataRow6 {
-  background-color: #c8c8aa;
-}
-
-.dataRow0 {
-  background-color: #bebea0;
+.dataRowEven {
+  background-color: #eef;
 }
 
 .cr0, .cr1, .cr2, .cr3, .cr4 {

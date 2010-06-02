@@ -4,7 +4,7 @@
   <div class="cr2"></div>
   <div class="cr3"></div>
   <div class="cr4"></div>
-  <div id="expenseTablePanel">
+  <div id="expensePanel">
     <div id="expenseTools">
       <div id="expenseToolsLeft">
       <%= link_to image_tag('add.png', { :alt => '新花销记录', 
@@ -43,7 +43,7 @@
       </thead>
       <tbody>
         <% @expense_items.map do |expense_item| %>
-          <tr class="<%='dataRow' + expense_item.date.wday.to_s %>">
+          <tr class="<%='dataRow' + ((0 == expense_item.date.day % 2)? "Even":"Odd") %>">
           <td class="dataCell"><%= expense_item.date %></td>
           <td class="dataCell"><%= expense_item.expense_type.description %></td>
           <td class="dataCell"><%= expense_item.value %></td>
