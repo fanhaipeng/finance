@@ -39,6 +39,7 @@ class ExpenseController < ApplicationController
         @expense_item.value = params[:expense_items][:value]
         @expense_item.note = params[:expense_items][:note]
         success = @expense_item.save
+        flash[:notice] = @expense_item.errors.full_messages if not success
         break unless success
       end
     else

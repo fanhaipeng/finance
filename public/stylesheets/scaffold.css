@@ -54,6 +54,8 @@ a:active {
 
 .warningNotice {
   color: red;
+  margin: 20px;
+  font-weight: bold;
 }
 
 #errorExplanation h2 {
@@ -237,7 +239,7 @@ a.skyBarLink:hover {
 
 .formField label, legend {
   font-weight: bold;
-  color: #a43;
+  color: #43a;
 }
 
 #expenseTools {

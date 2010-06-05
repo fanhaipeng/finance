@@ -1,5 +1,7 @@
 <div class="formPanel">
-  <%= flash[:notice] if flash[:notice] %>
+  <p class="warningNotice">
+    <%= flash[:notice] if flash[:notice] %>
+  </p>
   <% form_for :expense_items, :url => { :action => 'batch_create' } do |f| %>
     <p class="formField">
     <%= f.label :date_from, '起始时间：' %>
