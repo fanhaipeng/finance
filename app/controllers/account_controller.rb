@@ -3,6 +3,7 @@ class AccountController < ApplicationController
   layout "application"
 
   def login
+    @page_title = '登录'
     if request.post?
       user = 
         User.authenticate(params[:user][:username], params[:user][:password])
