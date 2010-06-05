@@ -8,6 +8,9 @@ class ExpenseController < ApplicationController
       ExpenseItem.find(:all, 
                        :conditions => ["date BETWEEN ? and ?", date_start, date_end],
                        :order => "date DESC")
+    @expense_total = 
+      ExpenseItem.sum(:value,
+                      :conditions => ["date BETWEEN ? and ?", date_start, date_end])
     @previous_month = date_start << 1
     @next_month = date_start >> 1
     @this_month = date_start

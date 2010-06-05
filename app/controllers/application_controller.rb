@@ -24,6 +24,7 @@ protected
 
   def authenticate
     @user = User.find_by_id(session[:user_id])
+    flash[:notice] = nil
     unless @user
       flash[:notice] = '请先登录'
       redirect_to :controller => :account, :action => :login

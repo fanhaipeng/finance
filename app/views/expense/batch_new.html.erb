@@ -28,7 +28,7 @@
 
     <p class="formField">
     <%= submit_tag '提交' %>
-    <%= link_to '返回', expense_month_path(Date.today.year, Date.today.mon) %>
+    <%= link_to '返回>>', expense_month_path(Date.today.year, Date.today.mon), :class => 'backLink'%>
     </p>
 <% end %>
 </div>

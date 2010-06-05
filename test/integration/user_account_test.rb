@@ -1,7 +1,9 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class CreateAccountTest < ActionController::IntegrationTest
+class AccountTest < ActionController::IntegrationTest
  
+  fixtures :users
+
   def test_create_account
     User.delete_all
 
@@ -27,4 +29,22 @@ class CreateAccountTest < ActionController::IntegrationTest
     assert_response :success
     assert_template 'users/show.html.erb'
   end
+
+  def test_login_redirect
+    get '/expense'
+    assert_redirected_to :controller => :account,
+                         :action => :login
+    assert flash[:notice]
+    assert !session[:user_id]
+
+    post '/account/login', :user => {:username => 'user1@example.com',
+                           :password => 'pass1'}
+    assert_redirected_to expense_month_path(Date.today.year, Date.today.mon)
+    assert session[:user_id]
+
+    get '/expense'
+    assert_response :success
+    assert !flash[:notice]
+  end
+
 end

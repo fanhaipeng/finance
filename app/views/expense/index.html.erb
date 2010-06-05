@@ -9,6 +9,7 @@
                                           :class => 'imgButton'}), 
               :action => 'batch_new' %>
   </div>
+  <span>本月已花销：<em><%= @expense_total %></em> 元</span>
   <div id="expenseToolsRight">
   <%= link_to_if @previous_month, 
                  image_tag('previous.png', { :alt => "上一月", 
