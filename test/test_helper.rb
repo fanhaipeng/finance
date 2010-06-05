@@ -35,4 +35,17 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def mock_expense_items date_from, date_to
+       { :"date_from(1i)" => date_from.year.to_s,
+         :"date_from(2i)" => date_from.mon.to_s,
+         :"date_from(3i)" => date_from.day.to_s,
+         :"date_to(1i)" => date_to.year.to_s,
+         :"date_to(2i)" => date_to.mon.to_s,
+         :"date_to(3i)" => date_to.day.to_s,
+         :expense_type_id => 2,
+         :value => 10.1,
+         :note => 'batch create expense items',
+         :tag_names => 'batchtag1 batchtag2' }
+  end
+
 end

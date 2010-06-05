@@ -4,25 +4,28 @@ class ExpenseControllerTest < ActionController::TestCase
 
   fixtures :expense_items
 
-  def test_index
+  def setup
     session[:user_id] = users(:one).id
+  end
+
+  def test_index
     get :index
     assert_response :success
+    assert_equal("#{Date.today.year}年#{Date.today.mon}月花销记录", assigns(:page_title))
     assert assigns(:expense_items)
     assert assigns(:previous_month)
     assert assigns(:next_month)
   end 
 
   def test_batch_new
-    session[:user_id] = users(:one).id
     get :batch_new
     assert_response :success
+    assert_equal('批量创建花销记录', assigns(:page_title))
   end
 
   def test_batch_create
     date_from = Date.today - 1
     date_to = Date.today + 1
-    session[:user_id] = users(:one).id
     assert_difference 'ExpenseItem.count', 3 do
       post :batch_create, 
            :expense_items => mock_expense_items(date_from, date_to)
@@ -31,11 +34,23 @@ class ExpenseControllerTest < ActionController::TestCase
     assert_redirected_to expense_month_path(date_from.year, date_from.mon)
   end
 
+  def test_batch_create_fail_validate
+    date_from = Date.today - 1
+    date_to = Date.today + 1
+    expense_items = mock_expense_items(date_from, date_to)
+    expense_items[:value] = nil
+    assert_no_difference 'ExpenseItem.count' do
+      post :batch_create, 
+           :expense_items => expense_items
+    end
+    assert_template :batch_new
+    assert flash[:notice]
+  end
+
   def test_batch_create_date
     # date_from equals with date_to
     date_from = Date.today
     date_to = Date.today
-    session[:user_id] = users(:one).id
     assert_difference 'ExpenseItem.count' do
       post :batch_create, :expense_items => mock_expense_items(date_from, date_to)
     end
@@ -53,6 +68,7 @@ class ExpenseControllerTest < ActionController::TestCase
   end
 
   def test_login_redirect
+    session[:user_id] = nil
     date_from = Date.today - 1
     date_to = Date.today + 1
     action_hash = 
@@ -81,18 +97,5 @@ class ExpenseControllerTest < ActionController::TestCase
       self.send args[:method], action, args[:object]     
       self.send args[:assert_method], args[:assert_result]
     end
-  end
-
-  def mock_expense_items date_from, date_to
-    { :"date_from(1i)" => date_from.year.to_s,
-      :"date_from(2i)" => date_from.mon.to_s,
-      :"date_from(3i)" => date_from.day.to_s,
-      :"date_to(1i)" => date_to.year.to_s,
-      :"date_to(2i)" => date_to.mon.to_s,
-      :"date_to(3i)" => date_to.day.to_s,
-      :expense_type_id => 2,
-      :value => 10.1,
-      :note => 'batch create expense items',
-      :tag_names => 'batchtag1 batchtag2' }
   end
 end

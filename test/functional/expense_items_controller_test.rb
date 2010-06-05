@@ -19,6 +19,7 @@ class ExpenseItemsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
+    assert_equal('新建花销记录', assigns(:page_title))
     assert assigns(:expense_types)
   end
 
@@ -58,6 +59,7 @@ class ExpenseItemsControllerTest < ActionController::TestCase
   test "should get edit" do
     get :edit, :id => expense_items(:one).to_param
     assert_response :success
+    assert_equal('更新花销记录', assigns(:page_title))
     assert assigns(:expense_types)
   end
 
