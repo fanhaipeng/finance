@@ -337,3 +337,40 @@ a.skyBarLink:hover {
   margin-right: 50px;
 }
 /* END: expense index */
+
+/* BEGIN: users */
+#userTable {
+  width: 90%;
+  margin: auto;
+}
+
+.userTableHeadRow {
+  background-color: #24a;
+}
+
+.userTableColumn1, .userTableColumn2, .userTableColumn3, .userTableColumn4 {
+  color: #fff;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.userTableColumn1 {
+  width: 20%;
+}
+
+.userTableColumn2 {
+  width: 30%;
+}
+
+.userTableColumn3 {
+  width: 30%;
+}
+
+.userTableDataRow {
+  background-color: #eef;
+}
+
+.userTableDataCell {
+  padding: 2px;
+}
+/* END: users

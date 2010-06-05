@@ -1,9 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+one: # password = pass1
   id: 1
   nickname: 'nick'
   email: 'user1@example.com'
   salt: 'salt'
   hashed_password: '4f194c23cbda33e0b724247e5bc1aa624a52b912'
   role: 1
+
+two: # password = pass1
+  id: 2
+  nickname: 'nick2'
+  email: 'user2@example.com'
+  salt: 'salt'
+  hashed_password: '9f47f781277f17382861080e1645782d2fbc6536'
+  role: 1
+
+admin: # password = admin
+  id: 1000
+  nickname: 'admin'
+  email: 'admin@example.com'
+  salt: 'salt'
+  hashed_password: 'ac2e4dd02a1c8fcbae83e2ae2e7de52f2fdb0193'
+  role: 0

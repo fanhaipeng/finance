@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
   skip_before_filter :authenticate, :only => [:new, :create]
+  before_filter :set_active_tab
+  before_filter :check_admin, :only => :index
+  before_filter :check_identity
 
   # GET /users
   # GET /users.xml
@@ -101,6 +104,24 @@ private
       else
         false
       end
+    end
+  end
+
+  def set_active_tab
+    @activetab = 4
+  end
+
+  def check_admin
+    user = User.find_by_id(session[:user_id])
+    if 0 != user.role
+      render :file => "public/401.html", :status => :unauthorized
+    end
+  end
+
+  def check_identity
+    user = User.find_by_id(session[:user_id])
+    if params[:id] and session[:user_id] != params[:id].to_i and 0 != user.role
+      render :file => "public/401.html", :status => :unauthorized
     end
   end
 end

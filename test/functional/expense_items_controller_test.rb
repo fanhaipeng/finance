@@ -84,6 +84,17 @@ class ExpenseItemsControllerTest < ActionController::TestCase
     assert_equal 'tag1 tag5', ei.tag_names
   end
 
+  test "should go to edit when validation fails" do
+    put :update, 
+        :id => expense_items(:one).to_param, 
+        :expense_item => { :date => Date.today+1, 
+                           :expense_type_id => 2, 
+                           :value => 0.0,
+                           :note => 'changed to 8.8',
+                           :tag_names => 'tag1 tag5' }
+    assert_template :edit
+  end
+
   test "should destroy expense_item" do
     assert_difference('ExpenseItem.count', -1) do
       delete :destroy, :id => expense_items(:one).to_param

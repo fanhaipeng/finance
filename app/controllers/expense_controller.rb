@@ -53,6 +53,7 @@ class ExpenseController < ApplicationController
            date_from.year, date_from.month)}
       else
         populate_expense_types
+        @page_title = '批量创建花销记录'
         format.html { render :action => 'batch_new' }
       end
     end

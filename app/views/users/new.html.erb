@@ -1,27 +1,27 @@
-<h1>注册新用户</h1>
-
+<div class="formPanel">
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :nickname, '名字' %><br />
+  <p class="formField">
+    <%= f.label :nickname, '名字：' %><br />
     <%= f.text_field :nickname %>
   </p>
-  <p>
-    <%= f.label :email, '邮件地址' %><br />
+  <p class="formField">
+    <%= f.label :email, '邮件地址：' %><br />
     <%= f.text_field :email %>
   </p>
-  <p>
-    <%= f.label :password, '密码' %><br />
+  <p class="formField">
+    <%= f.label :password, '密码：' %><br />
     <%= f.password_field :password %>
   </p>
-  <p>
-    <%= f.label :password_confirmation, '密码确认' %><br />
+  <p class="formField">
+    <%= f.label :password_confirmation, '密码确认：' %><br />
     <%= f.password_field :password_confirmation %>
   </p>
-  <p>
+  <p class="formField">
     <%= f.submit '注册' %>
+    <%= link_to '返回>>', expense_month_path(Date.today.year, Date.today.mon), :class => 'backLink' %>
   </p>
 <% end %>
+</div>
 
-<%= link_to '返回', expense_month_path(Date.today.year, Date.today.mon) %>

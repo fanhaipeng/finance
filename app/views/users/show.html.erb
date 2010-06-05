@@ -1,23 +1,26 @@
-<p>
-  <b>名字:</b>
-  <%=h @user.nickname %>
-</p>
-
-<p>
-  <b>电子邮件:</b>
-  <%=h @user.email %>
-</p>
-
-<p>
-  <b>用户角色:</b>
-  <% if 0 == @user.role %>
-    管理员
-  <% else %>
-    普通用户
-  <% end %>
-</p>
-
-
-<%= link_to '改密码', edit_user_path(@user, :change => 'password') %>
-<%= link_to '编辑', edit_user_path(@user) %> |
-<%= link_to '返回', users_path %>
+<div class="formPanel">
+  <p class="formField">
+    <label>名字:</label>
+    <%=h @user.nickname %>
+  </p>
+  
+  <p class="formField">
+    <label>电子邮件:</label>
+    <%=h @user.email %>
+  </p>
+  
+  <p class="formField">
+    <label>用户角色:</label>
+    <% if 0 == @user.role %>
+      管理员
+    <% else %>
+      普通用户
+    <% end %>
+  </p>
+  
+  <p class="formField">
+  <%= link_to '改密码', edit_user_path(@user, :change => 'password') %> | 
+  <%= link_to '编辑', edit_user_path(@user) %> |
+  <%= link_to '返回', users_path %>
+  </p>
+</div>

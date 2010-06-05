@@ -1,30 +1,27 @@
-<h1>显示所有用户</h1>
-
-<table>
-  <tr>
-    <th>名字</th>
-    <th>电子邮箱</th>
-    <th>用户类型</th>
+<table id="userTable">
+  <tr class="userTableHeadRow">
+    <th class="userTableColumn1">名字</th>
+    <th class="userTableColumn2">电子邮箱</th>
+    <th class="userTableColumn3">用户类型</th>
+    <th class="userTableColumn4">操作</th>
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
-    <td><%=h user.nickname %></td>
-    <td><%=h user.email %></td>
-    <td>
+  <tr class="userTableDataRow">
+    <td class="userTableDataCell"><%=h user.nickname %></td>
+    <td class="userTableDataCell"><%=h user.email %></td>
+    <td class="userTableDataCell">
       <% if 0 == user.role %>
         管理员
       <% else %>
         普通用户
       <% end %>
     </td>
-    <td><%= link_to '显示', user %></td>
-    <td><%= link_to '编辑', edit_user_path(user) %></td>
-    <td><%= link_to '删除', user, :confirm => '确定要删除吗？', :method => :delete %></td>
+    <td class="userTableDataCell"><%= link_to '显示', user %> | 
+    <%= link_to '编辑', edit_user_path(user) %> | 
+    <%= link_to '删除', user, :confirm => '确定要删除吗？', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
 <br />
-
 <%= link_to '创建新用户', new_user_path %>

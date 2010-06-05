@@ -75,7 +75,7 @@ class ExpenseItemsController < ApplicationController
                  @expense_item.date.year, @expense_item.date.mon ) }
         format.xml  { head :ok }
       else
-        prepare_for_edit @expense_item.date.year, @expense_item.date.mon
+        prepare_for @expense_item.date.year, @expense_item.date.mon
         @page_title = '更新花销记录'
         format.html { render :action => "edit" }
         format.xml  { render :xml => @expense_item.errors, :status => :unprocessable_entity }

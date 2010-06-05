@@ -35,6 +35,7 @@ class ExpenseeTest < ActionController::IntegrationTest
     end
     assert_template "expense/batch_new.html.erb"
     assert flash[:notice]
+    assert assigns(:page_title)
 
     # view batch new page again with error messages
     get '/expense/batch_new'

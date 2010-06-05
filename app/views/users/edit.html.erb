@@ -1,30 +1,29 @@
-<h1>编辑用户名字</h1>
-
-<% form_for(@user) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :nickname, '名字' %><br />
-    <%= f.text_field :nickname %>
-  </p>
-  <% fields_for :verify do |field| %>
-    <p>
-      <%= field.label :oldpass, '旧密码' %>
-      <%= field.password_field :oldpass %>
+<div class="formPanel">
+  <% form_for(@user) do |f| %>
+    <%= f.error_messages %>
+  
+    <p class="formField">
+      <%= f.label :nickname, '名字：' %><br />
+      <%= f.text_field :nickname %>
+    </p>
+    <% fields_for :verify do |field| %>
+      <p class="formField">
+        <%= field.label :oldpass, '旧密码：' %><br />
+        <%= field.password_field :oldpass %>
+      </p>
+    <% end %>
+    <p class="formField">
+      <%= f.label :password, '新密码：' %><br />
+      <%= f.password_field :password %>
+    </p>
+    <p class="formField">
+      <%= f.label :password_confirmation, '确认密码：' %><br />
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <p class="formField">
+      <%= f.submit '更新' %>
+      <%= link_to '返回>>', users_path, :class => 'backLink' %>
     </p>
   <% end %>
-  <p>
-    <%= f.label :password, '新密码' %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, '确认密码' %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p>
-    <%= f.submit '更新' %>
-  </p>
-<% end %>
+</div>
 
-<%= link_to '显示', @user %> |
-<%= link_to '返回', users_path %>

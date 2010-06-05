@@ -8,7 +8,8 @@ class UsersControllerTest < ActionController::TestCase
     session[:user_id] = users(:one).id
   end
 
-  test "should get index" do
+  test "admin should get index" do
+    session[:user_id] = users(:admin).id
     get :index
     assert_response :success
     assert_not_nil assigns(:users)
@@ -108,4 +109,54 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to users_path
   end
+
+  test "user(one) should not access user(two)" do
+    get :edit, :id => users(:two).to_param
+    assert_response 401
+    assert_template 'public/401.html'
+
+    put :update, :id => users(:two).to_param,
+        :user => { :nickname => users(:two).nickname,
+                   :password => 'newpass2', 
+                   :password_confirmation => 'newpass2' },
+        :verify => { :oldpasswd => 'pass2' }
+    assert_response 401
+    assert_template 'public/401.html'
+
+    get :show, :id => users(:two).to_param
+    assert_response 401
+    assert_template 'public/401.html'
+
+    delete :destroy, :id => users(:two).to_param
+    assert_response 401
+    assert_template 'public/401.html'
+  end
+
+  test "admin user can view other users' data" do
+    session[:user_id] = users(:admin)
+    get :edit, :id => users(:two).to_param
+    assert_response :success
+
+    put :update, :id => users(:two).to_param,
+        :user => { :nickname => users(:two).nickname,
+                   :password => 'newpass2', 
+                   :password_confirmation => 'newpass2' },
+        :verify => { :oldpasswd => 'pass2' }
+    assert_response :success
+
+    get :show, :id => users(:two).to_param
+    assert_response :success
+
+    assert_difference('User.count', -1) do
+      delete :destroy, :id => users(:one).to_param
+    end
+    assert_redirected_to users_path
+  end
+
+  test "non-admin user should not view index page" do
+    get :index
+    assert_response 401
+    assert_template 'public/401.html'
+  end
+
 end
