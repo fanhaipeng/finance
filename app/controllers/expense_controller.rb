@@ -4,6 +4,7 @@ class ExpenseController < ApplicationController
 
   def index
     date_start, date_end = normalize_date
+    @page_title = "#{date_start.year}年#{date_start.mon}月花销记录"
     @expense_items = 
       ExpenseItem.find(:all, 
                        :conditions => ["date BETWEEN ? and ?", date_start, date_end],
@@ -17,6 +18,7 @@ class ExpenseController < ApplicationController
   end
 
   def batch_new
+    @page_title = '批量创建花销记录'
     populate_expense_types
   end
 

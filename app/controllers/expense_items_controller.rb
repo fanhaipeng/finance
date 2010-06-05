@@ -15,6 +15,7 @@ class ExpenseItemsController < ApplicationController
   # GET /expense_items/1
   # GET /expense_items/1.xml
   def show
+    @page_title = '显示花销记录'
     @expense_item = ExpenseItem.find(params[:id])
 
     respond_to do |format|
@@ -26,6 +27,7 @@ class ExpenseItemsController < ApplicationController
   # GET /expense_items/new
   # GET /expense_items/new.xml
   def new
+    @page_title = '新建花销记录'
     @expense_item = ExpenseItem.new
     prepare_for
     respond_to do |format|
@@ -36,6 +38,7 @@ class ExpenseItemsController < ApplicationController
 
   # GET /expense_items/1/edit
   def edit
+    @page_title = '更新花销记录'
     @expense_item = ExpenseItem.find(params[:id])
     prepare_for @expense_item.date.year, @expense_item.date.mon
   end

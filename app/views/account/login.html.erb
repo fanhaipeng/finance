@@ -2,6 +2,7 @@
   <div id="loginSlogen">
   </div>
   <div id='loginForm'>
+    <p class="warningNotice"><%= flash[:notice] %></p>
     <% form_for :user do |f| %>
       <p>
         <%= f.label :username, '用户名' %>

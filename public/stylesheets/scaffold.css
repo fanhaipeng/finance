@@ -52,6 +52,10 @@ a:active {
   background-color: #f0f0f0;
 }
 
+.warningNotice {
+  color: red;
+}
+
 #errorExplanation h2 {
   text-align: left;
   font-weight: bold;
