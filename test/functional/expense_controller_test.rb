@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class ExpenseControllerTest < ActionController::TestCase
 
-  fixtures :expense_items
-
   def setup
     session[:user_id] = users(:one).id
   end
@@ -11,8 +9,12 @@ class ExpenseControllerTest < ActionController::TestCase
   def test_index
     get :index
     assert_response :success
+
     assert_equal("#{Date.today.year}年#{Date.today.mon}月花销记录", assigns(:page_title))
-    assert assigns(:expense_items)
+
+    assert assigns(:expense_items).length > 0
+    assigns(:expense_items).each {|item| assert_equal(1, item.user_id)}
+
     assert assigns(:previous_month)
     assert assigns(:next_month)
   end 
@@ -21,6 +23,8 @@ class ExpenseControllerTest < ActionController::TestCase
     get :batch_new
     assert_response :success
     assert_equal('批量创建花销记录', assigns(:page_title))
+
+    assert ExpenseType.find_all_by_user_id(session[:user_id], assigns(:expense_types).length)
   end
 
   def test_batch_create

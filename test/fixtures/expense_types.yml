@@ -6,10 +6,12 @@
 # two:
 #   column: value
 
-expense_type_01:
+one:
   id: 1
   description: 'type01'
+  user_id: 1
 
-expense_type_02:
+two:
   id: 2
   description: 'type02'
+  user_id: 1

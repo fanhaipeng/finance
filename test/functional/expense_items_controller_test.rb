@@ -2,10 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class ExpenseItemsControllerTest < ActionController::TestCase
 
-  fixtures :expense_types
-  fixtures :expense_items
-  fixtures :users
-
   def setup
     session[:user_id] = users(:one).id
   end
@@ -20,7 +16,9 @@ class ExpenseItemsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     assert_equal('新建花销记录', assigns(:page_title))
-    assert assigns(:expense_types)
+    assert_equal(ExpenseType.find_all_by_user_id(session[:user_id]).length, assigns(:expense_types).length)
+    assert assigns(:expense_tags).length > 0
+    assigns(:expense_tags).each {|tag| assert_equal(1, tag.user_id)}
   end
 
   test "should create expense_item" do
@@ -60,7 +58,9 @@ class ExpenseItemsControllerTest < ActionController::TestCase
     get :edit, :id => expense_items(:one).to_param
     assert_response :success
     assert_equal('更新花销记录', assigns(:page_title))
-    assert assigns(:expense_types)
+    assert_equal(ExpenseType.find_all_by_user_id(session[:user_id]).length, assigns(:expense_types).length)
+    assert assigns(:expense_tags).length > 0
+    assigns(:expense_tags).each {|tag| assert_equal(1, tag.user_id)}
   end
 
   test "should update expense_item" do

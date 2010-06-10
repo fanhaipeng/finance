@@ -28,27 +28,27 @@ class ExpenseTypesControllerTest < ActionController::TestCase
   end
 
   test "should show expense_type" do
-    get :show, :id => expense_types(:expense_type_01).to_param
+    get :show, :id => expense_types(:one).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => expense_types(:expense_type_01).to_param
+    get :edit, :id => expense_types(:one).to_param
     assert_response :success
   end
 
   test "should update expense_type" do
     put :update, 
-        :id => expense_types(:expense_type_01).to_param, 
+        :id => expense_types(:one).to_param, 
         :expense_type => { :description => 'expense type B' }
     assert_redirected_to expense_types_url
-    et = ExpenseType.find(expense_types(:expense_type_01))
+    et = ExpenseType.find(expense_types(:one))
     assert_equal 'expense type B', et.description
   end
 
   test "should destroy expense_type" do
     assert_difference('ExpenseType.count', -1) do
-      delete :destroy, :id => expense_types(:expense_type_01).to_param
+      delete :destroy, :id => expense_types(:one).to_param
     end
 
     assert_redirected_to expense_types_url

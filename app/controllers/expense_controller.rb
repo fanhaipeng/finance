@@ -6,12 +6,11 @@ class ExpenseController < ApplicationController
     date_start, date_end = normalize_date
     @page_title = "#{date_start.year}年#{date_start.mon}月花销记录"
     @expense_items = 
-      ExpenseItem.find(:all, 
+      ExpenseItem.find_all_by_user_id(session[:user_id], 
                        :conditions => ["date BETWEEN ? and ?", date_start, date_end],
                        :order => "date DESC")
-    @expense_total = 
-      ExpenseItem.sum(:value,
-                      :conditions => ["date BETWEEN ? and ?", date_start, date_end])
+    @expense_total = 0 
+    @expense_items.each {|item| @expense_total += item.value } 
     @previous_month = date_start << 1
     @next_month = date_start >> 1
     @this_month = date_start

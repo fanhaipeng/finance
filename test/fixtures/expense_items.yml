@@ -8,7 +8,16 @@
 
 one:
   id: 1
-  date: '2010-5-1'
+  date: <%= Date.new(Date.today.year, Date.today.mon, 1) %> 
   expense_type_id: 1
   value: 2.1
+  user_id: 1
   note: 'expense item one'
+
+two:
+  id: 2
+  date: <%= Date.new(Date.today.year, Date.today.mon, 2) %> 
+  expense_type_id: 1
+  value: 2.2
+  user_id: 1
+  note: 'expense item two'

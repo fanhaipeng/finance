@@ -13,13 +13,13 @@ class ApplicationController < ActionController::Base
 protected
 
   def populate_expense_types
-    @expense_types = ExpenseType.find(:all).map do |t|
+    @expense_types = ExpenseType.find_all_by_user_id(session[:user_id]).map do |t|
       [t.description, t.id]
     end
   end
 
   def populate_expense_tags
-    @expense_tags = ExpenseTag.find(:all)
+    @expense_tags = ExpenseTag.find_all_by_user_id(session[:user_id])
   end
 
   def authenticate
