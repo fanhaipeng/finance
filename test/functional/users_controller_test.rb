@@ -92,6 +92,7 @@ class UsersControllerTest < ActionController::TestCase
                    :password_confirmation => ''},
         :verify => { :oldpass => ''}
     assert_template :edit
+    assert flash[:notice]
   end
 
   test "should return to edit when old pass not passed" do
@@ -101,6 +102,7 @@ class UsersControllerTest < ActionController::TestCase
                    :password_confirmation => 'pass' },
         :verify => { :oldpasswd => 'failpass' }
     assert_template :edit
+    assert flash[:notice]
   end
 
   test "should destroy user" do

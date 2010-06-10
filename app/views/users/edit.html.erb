@@ -1,6 +1,8 @@
 <div class="formPanel">
   <% form_for(@user) do |f| %>
-    <%= f.error_messages %>
+    <p class="warningNotice">
+      <%= flash[:notice] if flash[:notice] %>
+    </p>
   
     <p class="formField">
       <%= f.label :nickname, '名字：' %><br />

@@ -74,6 +74,11 @@ class UsersController < ApplicationController
         format.xml  { head :ok }
       else
         @page_title = '更新用户信息'
+        if not @user.errors.full_messages.blank?
+          flash[:notice] = @user.errors.full_messages
+        else
+          flash[:notice] = '旧密码不正确，请重试'
+        end
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, 
                              :status => :unprocessable_entity }
@@ -127,4 +132,5 @@ private
       render :file => "public/401.html", :status => :unauthorized
     end
   end
+
 end
