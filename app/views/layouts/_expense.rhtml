@@ -10,7 +10,7 @@
       <ul>
         <% apptabs.each do |key, value| %>
           <% if @activetab == key %> 
-            <li class="activeTab"><%= link_to value[:text], value[:link] %></li>
+            <li class="activeTab"><%= value[:text]%></li>
           <% else %>
             <li><%= link_to value[:text], value[:link] %></li>
           <% end %>
