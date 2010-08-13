@@ -212,11 +212,11 @@ a.skyBarLink:hover {
 /* END: expense layout */
 
 /* BEGIN: expense index */
-#expenseContent {
+#wrapper{
   text-align: center;
 }
 
-#expenseTools, #expensePanel {
+#expenseTools, #panel{
   margin: auto;
 }
 
@@ -250,7 +250,7 @@ a.skyBarLink:hover {
   float: right;
 }
 
-#expensePanel {
+#panel{
   width: 844px;
   background-repeat: repeat-y;
   text-align: center;
