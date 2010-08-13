@@ -57,6 +57,9 @@ ActionController::Routing::Routes.draw do |map|
   map.expense_action 'expense/:action',
                      :controller => 'expense'
 
+  map.config_action 'config/:action',
+	  	     :controller => 'config'
+
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.format'
 
