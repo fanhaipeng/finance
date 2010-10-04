@@ -2,7 +2,7 @@
   <div class="configSection">
     <p class="sectionTitle">消费类型</p>
     <div id="createNewType">
-      <% form_for (:expense_type, :url => url_for(:action => 'new_type')) do |f| %>
+      <% form_for(:expense_type, :url => url_for(:action => 'new_type')) do |f| %>
       <%= f.text_field :description %>
       <%= f.submit '创建消费类型' %>
       <% end %>
