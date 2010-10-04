@@ -1,6 +1,24 @@
 <div id="configPanel">
   <div class="configSection">
+    <p class="sectionTitle">消费类型</p>
+    <div id="createNewType">
+      <% form_for (:expense_type, :url => url_for(:action => 'new_type')) do |f| %>
+      <%= f.text_field :description %>
+      <%= f.submit '创建消费类型' %>
+      <% end %>
+    </div>
+    <div id="typeGroup">
+      <% @expense_types.map do |type| %>
+        <span class="expenseTypeField"><%=h type.description %></span>
+      <% end %>
+    </div>
   </div>
   <div class="configSection">
+    <p class="sectionTitle">标签</p>
+    <div id="tagGroup">
+      <% @expense_tags.map do |tag| %>
+        <span class="expenseTagField"><%=h tag.name %></span>
+      <% end %>
+    </div>
   </div>
 </div>
