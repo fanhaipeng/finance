@@ -368,4 +368,20 @@ a.skyBarLink:hover {
 .userTableDataCell {
   padding: 2px;
 }
-/* END: users
+/* END: users */
+
+/* BEGIN: config */
+#configPanel
+{
+  background: Green;
+  width: 95%;
+  height: 200px;
+  margin: auto;
+}
+
+.configSection
+{
+  background: Red;
+}
+/* END: config */
+ 
