@@ -1,5 +1,3 @@
-!tmp/pre-deploy
-!tmp/restart.txt
 tmp
 log
 *.swp
