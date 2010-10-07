@@ -2,3 +2,9 @@ echo "**************************************************"
 echo "  ACTIONS TAKEN BEFORE PRODUCTION MODE DEPLOYMENT" 
 echo "**************************************************"
 
+echo "(1) Add production database configuration to database.yml"
+
+echo "(2) Switch RAILS_ENV to production mode"
+echo "(3) Create the installation package"
+echo "(4) Clean up"
+
