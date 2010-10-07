@@ -17,9 +17,22 @@ echo "...Done"
 echo ""
 
 echo "(2) Switch RAILS_ENV to production mode"
+cp ../config/environment.rb ./
+sed "s/ENV\['RAILS_ENV'\]\s\+||=\s\+'\w*'/ENV['RAILS_ENV'] = 'production'/g" environment.rb > environment.rb.tmp
+rm -f environment.rb 
+mv environment.rb.tmp environment.rb
+echo "...Done"
+echo ""
 
 echo "(3) Create the installation package"
+cp -R ../app/ ./
+cp -R ../config/ ./
+cp -R ../public/ ./
+cp -R ../db/ ./
+mv -f database.yml config/
+mv -f environment.rb config/
+tar czf money.tar.gz --exclude ../config/environment.rb --exclude ../config/database.yml --remove-files app/ config/ public/ db/
+echo "...Done"
+echo ""
 
-echo "(4) Clean up"
-#rm -f database.yml
 
