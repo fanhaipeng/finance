@@ -3,8 +3,23 @@ echo "  ACTIONS TAKEN BEFORE PRODUCTION MODE DEPLOYMENT"
 echo "**************************************************"
 
 echo "(1) Add production database configuration to database.yml"
+cp ../config/database.yml ./database.yml
+echo "production:" >> database.yml
+echo "  adapter: mysql"  >> database.yml
+echo "  encoding: utf8" >> database.yml
+echo "  reconnect: false" >> database.yml
+echo "  database: haipengo_money" >> database.yml
+echo "  pool: 5" >> database.yml
+echo "  username: haipengo_money" >> database.yml
+echo "  password: 4159791" >> database.yml
+echo "  host: localhost" >> database.yml
+echo "...Done"
+echo ""
 
 echo "(2) Switch RAILS_ENV to production mode"
+
 echo "(3) Create the installation package"
+
 echo "(4) Clean up"
+#rm -f database.yml
 
