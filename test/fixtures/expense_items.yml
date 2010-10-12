@@ -21,3 +21,59 @@ two:
   value: 2.2
   user_id: 1
   note: 'expense item two'
+
+three_one:
+  id: 3
+  date: <%= Date.new(Date.today.year, Date.today.mon, 5) %> 
+  expense_type_id: 1
+  value: 10.2
+  user_id: 3
+  note: '测试消费记录3.1'
+
+three_two:
+  id: 4
+  date: <%= Date.new(Date.today.year, Date.today.mon, 2) %> 
+  expense_type_id: 1
+  value: 10.2
+  user_id: 3
+  note: '测试消费记录3.2'
+
+three_three:
+  id: 5
+  date: <%= Date.new(Date.today.year, Date.today.mon, 1) %> 
+  expense_type_id: 1
+  value: 10.2
+  user_id: 3
+  note: '测试消费记录3.3'
+
+three_four:
+  id: 6
+  date: <%= Date.new(Date.today.year, Date.today.mon, 1) %> 
+  expense_type_id: 1
+  value: 10.2
+  user_id: 3
+  note: '测试消费记录3.4'
+
+three_five:
+  id: 7
+  date: <%= Date.new(Date.today.year, Date.today.mon, 1) %> 
+  expense_type_id: 1
+  value: 10.2
+  user_id: 3
+  note: '测试消费记录3.5'
+
+three_six:
+  id: 8
+  date: <%= Date.new(Date.today.year, Date.today.mon, 2) %> 
+  expense_type_id: 1
+  value: 10.2
+  user_id: 3
+  note: '测试消费记录3.6'
+
+three_seven:
+  id: 9
+  date: <%= Date.new(Date.today.year, Date.today.mon, 3) %> 
+  expense_type_id: 1
+  value: 10.2
+  user_id: 3
+  note: '测试消费记录3.7'

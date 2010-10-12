@@ -10,7 +10,7 @@ class ExpenseControllerTest < ActionController::TestCase
     get :index
     assert_response :success
 
-    assert_equal("#{Date.today.year}年#{Date.today.mon}月花销记录", assigns(:page_title))
+    assert_select "title", "#{Date.today.year}年#{Date.today.mon}月花销记录"
 
     assert assigns(:expense_items).length > 0
     assigns(:expense_items).each {|item| assert_equal(1, item.user_id)}
@@ -102,4 +102,20 @@ class ExpenseControllerTest < ActionController::TestCase
       self.send args[:assert_method], args[:assert_result]
     end
   end
+
+  def test_row_color_1
+    session[:user_id] = users(:three).id
+    get :index
+    assert_response :success
+
+    assert_select "tbody tr", :count => 7
+    assert_select "tbody tr[class=dataRowOdd]:first-child" 
+    assert_select "tbody tr[class=dataRowEven]:nth-child(2)" 
+    assert_select "tbody tr[class=dataRowOdd]:nth-child(3)" 
+    assert_select "tbody tr[class=dataRowOdd]:nth-child(4)" 
+    assert_select "tbody tr[class=dataRowEven]:nth-child(5)" 
+    assert_select "tbody tr[class=dataRowEven]:nth-child(6)" 
+    assert_select "tbody tr[class=dataRowEven]:nth-child(7)" 
+  end
+
 end

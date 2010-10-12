@@ -16,6 +16,14 @@ two: # password = pass1
   hashed_password: '9f47f781277f17382861080e1645782d2fbc6536'
   role: 1
 
+three: # password = pass3
+  id: 3
+  nickname: 'nick3'
+  email: 'user3@example.com'
+  salt: 'salt'
+  hashed_password: 'a32e4d8507f00bc81a86aef2030ababa2250fe43'
+  role: 1
+
 admin: # password = admin
   id: 1000
   nickname: 'admin'

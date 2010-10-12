@@ -35,7 +35,7 @@
     </tr>
   </thead>
   <tbody>
-    <% current_day = @expense_items[0].date
+    <% current_day = @expense_items[0].date if @expense_items.length > 0
        row_type = "dataRowOdd"
        @expense_items.map do |expense_item|
          if current_day != expense_item.date
