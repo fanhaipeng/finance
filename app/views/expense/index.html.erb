@@ -31,18 +31,23 @@
       <th class="headColumn2 headCell">类型</th>
       <th class="headColumn3 headCell">金额</th>
       <th class="headColumn4 headCell">备注</th>
-      <th class="headColumn5 headCell">标签</th>
       <th class="headColumn6 headCell">操作</th>
     </tr>
   </thead>
   <tbody>
-    <% @expense_items.map do |expense_item| %>
-      <tr class="<%='dataRow' + ((0 == expense_item.date.day % 2)? "Even":"Odd") %>">
+    <% current_day = @expense_items[0].date
+       row_type = "dataRowOdd"
+       @expense_items.map do |expense_item|
+         if current_day != expense_item.date
+           current_day = expense_item.date
+           row_type = row_type ==  "dataRowEven" ? "dataRowOdd" : "dataRowEven"
+         end
+     %>
+      <tr class="<%= row_type %>">
       <td class="dataCell"><%= expense_item.date %></td>
       <td class="dataCell"><%= expense_item.expense_type.description %></td>
       <td class="dataCell"><%= expense_item.value %></td>
-      <td class="dataCell"><%= expense_item.note %></td>
-      <td class="dataCell"><%= expense_item.tag_names %></td>
+      <td class="dataCell dataExpenseItem"><%= expense_item.note %></td>
       <td class="dataCell">
         <%= link_to image_tag('edit.png', {:alt => '编辑', 
                                            :title => '编辑', 

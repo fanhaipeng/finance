@@ -268,20 +268,21 @@ a.skyBarLink:hover {
   width: 15%;
 }
 .headColumn2 {
-  width: 9%;
+  width: 15%;
 }
 .headColumn3 {
   width: 10%;
 }
 .headColumn4 {
-  width: 40%;
+  width: 50%;
 }
 .headColumn5 {
-  width: 18%;
+  width: 10%;
 }
 
-.headColumn6 {
-  width: 8%;
+.dataExpenseItem
+{
+  text-align: left;
 }
 
 .dataCell, .headCell{
