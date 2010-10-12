@@ -8,7 +8,7 @@ one: # password = pass1
   hashed_password: '4f194c23cbda33e0b724247e5bc1aa624a52b912'
   role: 1
 
-two: # password = pass1
+two: # password = pass2
   id: 2
   nickname: 'nick2'
   email: 'user2@example.com'
