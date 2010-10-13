@@ -2,8 +2,12 @@ class ConfigController < ApplicationController
   before_filter :set_active_tab
 
   def index
-    @expense_types = ExpenseType.find_all_by_user_id(session[:user_id])
-    @expense_tags = ExpenseTag.find_all_by_user_id(session[:user_id])
+    if @current_user.role == 0
+      redirect_to users_path
+    else 
+      @expense_types = ExpenseType.find_all_by_user_id(session[:user_id])
+      @expense_tags = ExpenseTag.find_all_by_user_id(session[:user_id])
+    end
   end
 
   def new_type

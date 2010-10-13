@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ConfigControllerTest < ActionController::TestCase
+
   def setup
     session[:user_id] = users(:one).id
   end
@@ -24,4 +25,11 @@ class ConfigControllerTest < ActionController::TestCase
 
     assert_redirected_to config_action_url
   end
+
+  def test_admin_user_config_page
+    session[:user_id] = users(:admin).id
+    get :index
+    assert_redirected_to users_path
+  end
+
 end
