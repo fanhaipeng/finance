@@ -24,7 +24,7 @@
     </p>
     <p class="formField">
       <%= f.submit '更新' %>
-      <%= link_to '返回>>', users_path, :class => 'backLink' %>
+      <%= link_to '返回>>', (@current_user.role == 0 ? users_path : expense_month_path(Date.today.year, Date.today.mon)), :class => 'backLink' %>
     </p>
   <% end %>
 </div>

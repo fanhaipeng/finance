@@ -20,6 +20,6 @@
   
   <p class="formField">
   <%= link_to '更改', edit_user_path(@user) %> |
-  <%= link_to '返回', users_path %>
+  <%= link_to '返回', @current_user.role == 0 ? users_path : expense_month_path(Date.today.year, Date.today.mon) %>
   </p>
 </div>

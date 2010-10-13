@@ -15,6 +15,37 @@ class UsersControllerTest < ActionController::TestCase
     assert_not_nil assigns(:users)
   end
 
+  test "current user should be displayed on sky bar" do
+    session[:user_id] = users(:admin).id
+    get :edit, :id => users(:one).to_param
+    assert_response :success
+    assert assigns(:current_user) 
+    assert_equal("admin", assigns(:current_user).nickname)
+  end
+
+  test "back link should point to user index page for admin" do
+    session[:user_id] = users(:admin).id
+
+    get :edit, :id => users(:admin).id
+    assert_response :success
+    assert_select "a[class=backLink][href=/users]"
+
+    get :show, :id => users(:admin).id
+    assert_response :success
+    assert_select "a[href=/users]"
+  end
+
+  test "back link should point to expense page for others" do
+    back_link = "/expense/" + Date.today.year.to_s + "/" + Date.today.mon.to_s
+    get :edit, :id => users(:one).to_param
+    assert_response :success
+    assert_select "a[class=backLink][href=" + back_link + "]"
+
+    get :show, :id => users(:one).to_param
+    assert_response :success
+    assert_select "a[href=" + back_link + "]"
+  end
+
   test "should get new" do
     get :new
     assert_response :success

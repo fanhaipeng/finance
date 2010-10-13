@@ -9,9 +9,9 @@
   <body>
     <div id="skyBar">
       <div id="skyBarContent">
-        <% if @user and @user.id %>
+        <% if @current_user and @current_user.id %>
           <span id="welcome">欢迎</span>
-          <%= link_to @user.nickname, user_path(@user), :class => 'skyBarLink' %>
+          <%= link_to @current_user.nickname, user_path(@current_user), :class => 'skyBarLink' %>
           &nbsp;&nbsp;&nbsp;
           <%= link_to '登出', url_for(:controller => :account, :action => :logout), :class => 'skyBarLink' %>
         <% end %>
