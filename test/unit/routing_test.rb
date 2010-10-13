@@ -13,4 +13,8 @@ class RoutingTest < ActionController::TestCase
     assert_recognizes({ :anything => ["unknown", "request"], :controller => 'expense', :action => 'unknown_request' }, '/unknown/request')
   end
 
+  def test_root_url
+    assert_recognizes({:controller => 'expense', :action => 'index'}, '/')
+  end
+
 end

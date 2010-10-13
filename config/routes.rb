@@ -66,4 +66,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "*anything",
               :controller => 'expense',
               :action => 'unknown_request'
+
+  map.root :controller => "expense"
 end
