@@ -61,11 +61,13 @@ ActionController::Routing::Routes.draw do |map|
 	  	     :controller => 'config'
 
   map.connect ':controller/:action/:id'
+  
   map.connect ':controller/:action/:id.format'
+
+  map.root :controller => "expense"
 
   map.connect "*anything",
               :controller => 'expense',
               :action => 'unknown_request'
 
-  map.root :controller => "expense"
 end
